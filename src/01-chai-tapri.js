@@ -27,5 +27,22 @@
  *   // => { totalChai: 0, totalRevenue: 0 }
  */
 export function chaiTapriRevenue(customers) {
-  // Your code here
-}
+ // Your code here
+  if( typeof customers !== "number" || customers < 0 || !Number.isInteger(customers) ||  !Number.isFinite(customers) ) return {totalChai: 0, totalRevenue: 0};
+ let  price = 10;
+ let splPrice = 15;
+ let CC = 0;
+ let splCC = 0;
+
+  for (let i=1; i<=customers; i++){
+    if((i%3) === 0 ) { splCC++; } 
+    else {CC++;}      
+    }
+
+  let totalPrice = (price * CC) + (splPrice * splCC);
+
+  return { totalChai: (CC+splCC), totalRevenue: totalPrice };
+
+  }
+
+
