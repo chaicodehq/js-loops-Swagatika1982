@@ -31,4 +31,46 @@
  */
 export function sabziMandiBill(shoppingList, priceList) {
   // Your code here
+if (!Array.isArray(shoppingList) ||  priceList === null ||  typeof priceList !== "object" ||   Array.isArray(priceList)  ) {
+    return { items: [], total: 0 };
+  }
+
+  const items = [];
+  let totalBill = 0;
+
+  
+  for (const item of shoppingList) {
+    if (!item || typeof item !== "object") continue;
+
+    const name = item.name;
+    const qty = item.qty;
+
+    if (typeof name !== "string" || name.trim() === "") continue;
+    if (typeof qty !== "number" || !Number.isFinite(qty) || qty <= 0) continue;
+
+     const nameTrim = rawName.trim();
+    const nameLower = nameTrim.toLowerCase();
+    let vege = null;
+    if (Object.hasOwn(priceList, nameTrim)) vege = nameTrim;
+    else if (Object.hasOwn(priceList, nameLower)) vege = nameLower;
+    else continue; // vege not available
+   
+     
+    const pricePerKg = priceList[vege];
+
+    if (typeof pricePerKg !== "number" || !Number.isFinite(pricePerKg)) continue;
+
+  
+    if (pricePerKg > 80) continue;
+
+    const cost = pricePerKg * qty;
+    total += cost;
+
+    items.push({ name: vege, qty, pricePerKg, cost });
+  }
+
+  return { items, totalBill };
+
+
+
 }

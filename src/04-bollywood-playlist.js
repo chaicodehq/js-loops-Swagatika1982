@@ -47,14 +47,12 @@ export function buildPlaylist(songs, maxDuration) {
   let i = 0;
   while (i < songs.length) {
     const duration = songs[i];
-
-    // skip invalid durations
+ 
     if (typeof duration !== "number" || !Number.isFinite(duration) || duration <= 0) {
       i++;
       continue;
     }
-
-    // check limit BEFORE adding
+ 
     if (totalDuration + duration > maxDuration) break;
 
     totalDuration += duration;
