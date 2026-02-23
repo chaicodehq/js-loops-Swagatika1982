@@ -72,16 +72,20 @@ export function iplPointsTable(matches) {
     if (result === "tie")
     {    accObj[team1].played += 1;
       accObj[team2].played += 1;
+
         accObj[team1].tied += 1;
         accObj[team2].tied += 1;
+
         accObj[team1].points += 1;
         accObj[team2].points += 1;
     } 
-    else if(  result === "no_result" || result === "nr" ||  result === "noresult")
+    else if(  result === "no_result" || result === "nr" ||  result === "no result" ||   result === "noresult")
     { accObj[team1].played += 1;
       accObj[team2].played += 1;
+
       accObj[team1].noResult += 1;
       accObj[team2].noResult += 1;
+
       accObj[team1].points += 1;
       accObj[team2].points += 1;
     }
@@ -94,20 +98,23 @@ export function iplPointsTable(matches) {
       if (winner !== team1 && winner !== team2) continue;
 
       const loser = winner === team1 ? team2 : team1;
+
        accObj[winner].played += 1;
       accObj[loser].played += 1;
+
       accObj[winner].won += 1;
       accObj[winner].points += 2;
+
       accObj[loser].lost += 1;
     }
-     
+ }    
   const sortedObj = Object.values(accObj);   
   sortedObj.sort((a, b) =>  {
     if (b.points !== a.points) return b.points - a.points;
     return a.team.localeCompare(b.team);
   });
 
-  return sortedObj
-}
+  
 
+return sortedObj
 }
