@@ -66,9 +66,6 @@ export function iplPointsTable(matches) {
     if (!accObj[team2]) accObj[team2] = { team: team2, played: 0, won: 0, lost: 0, tied: 0, noResult: 0, points: 0 };
 
 
-    accObj[team1].played += 1;
-    accObj[team2].played += 1;
-
     if (result === "tie")
     {    accObj[team1].played += 1;
       accObj[team2].played += 1;
@@ -79,7 +76,7 @@ export function iplPointsTable(matches) {
         accObj[team1].points += 1;
         accObj[team2].points += 1;
     } 
-    else if(  result === "no_result" || result === "nr" ||  result === "no result" ||   result === "noresult")
+    else if(  result === "no_result")
     { accObj[team1].played += 1;
       accObj[team2].played += 1;
 
